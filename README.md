@@ -14,8 +14,8 @@ server is already running. To launch it, type `M-x robe-start`.
 As you change the code in your project, you'll want to update the
 running process. To load the current file, type <kbd>C-c C-l</kbd>
 (`ruby-load-file`), see [inf-ruby](https://github.com/nonsequitur/inf-ruby/)
-for more commands. When you're developing a Rails project, you can
-type <kbd>C-c C-k</kbd> instead, to reload the whole environment at once.
+for more commands. When you're working on a Rails project, you can
+type <kbd>C-c C-k</kbd> instead to reload the whole environment at once.
 
 ## Features
 
@@ -121,8 +121,10 @@ rvm automatically.
   priority.
 * Jumping to methods defined with `Module#delegate` just brings us to the place
   where `delegate` is called, which is accurate, but often less than useful.
-* Having more than one `inf-ruby` buffer at a time is not supported. If you see
-  unexpected "Method not found" errors, check if you have an older one.
+* To work on several projects in the same Emacs session, you'll have
+  to create the Ruby console for each project after the first one
+  manually with `M-x inf-ruby-console-auto`. Otherwise, the first one
+  will be used for all Ruby files, with suboptimal results.
 * We may get the context wrong for code inside a block if the method
   it's passed to uses `instance_eval` or `instance_exec`.
 

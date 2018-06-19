@@ -1,4 +1,5 @@
 (require 'ert-x)
+(require 'robe)
 
 (ert-deftest signature-for-simple-args ()
   (should (string= (robe-signature '("C" t "foo" (("req" "a") ("req" "b"))))
@@ -22,7 +23,7 @@
                    "C#foo(arg1, arg2, args..., &block)")))
 
 (ert-deftest signature-for-class-method ()
-  (should (string= (robe-signature '("A::B" nil "bar" nil)) "A::B.bar()")))
+  (should (string= (robe-signature '("A::B" nil "bar" nil)) "A::B.bar")))
 
 (ert-deftest signature-font-lock ()
   (should (equal-including-properties
@@ -177,6 +178,7 @@
     bar.tee
   end
 end")
+               (ruby-mode)
                (search-backward "tee")
                (robe-call-context))))
     (should (equal "bar" (car ctx)))
